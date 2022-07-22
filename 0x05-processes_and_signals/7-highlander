@@ -2,7 +2,7 @@
 # This script displays "To infinity and beyond" indefinitely
 # and "I am invincible!!!" when receiving SIGTERM
 # shellcheck disable=SC2009
-trap "I am invincible!!!" SIGTERM
+trap "echo I am invincible!!!" SIGTERM
 while :
 do
 	echo "To infinity and beyond"
