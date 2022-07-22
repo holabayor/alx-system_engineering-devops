@@ -13,7 +13,7 @@ elif [ "$1" = "restart" ]; then
 	xargs kill < "/var/run/my_process.pid"
 	rm -f /var/run/my_process.pid
 	./manage_my_process &
-	pgrep -f manage_my_process >> /var/run/my_process.pid
+	echo $! >> /var/run/my_process.pid
 	echo "manage_my_process restarted"
 
 else
