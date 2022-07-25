@@ -4,6 +4,18 @@
 #include <stdio.h>
 
 /**
+ * infinite_while - infinite loop function
+ * Return: 0 always
+ */
+int infinite_while(void)
+{
+    while (1)
+    {
+        sleep(1);
+    }
+    return (0);
+}
+/**
  * main - function that creates 5 zombie process
  * Return: 0 always
  */
@@ -18,7 +30,7 @@ int main(void)
 			printf("Zombie process created, PID: %d\n", pid);
 		else
 			exit(0);
-		sleep(20);
 	}
+	infinite_while();
 	return (0);
 }
