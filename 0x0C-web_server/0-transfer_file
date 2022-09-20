@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Bash script that transfers a file from client to a server
+# Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY
+
+if [ $# -lt 3 ]
+then
+    echo Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY
+fi
+if [ $4 ]
+    then
+        echo "Done"
+    fi
