@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Bash script that configures Nginx server
-# so that /redirect_me is redirecting to another page
+# Bash script that configures Nginx server to have
+# a custom 404 page that contains the string 'Ceci n'est pas une page'
 
 apt-get update
 apt-get install -y nginx
@@ -16,12 +16,17 @@ new_config=\
         location / {
                 try_files \$uri \$uri/ =404;
         }
-        
+        error_page 404 /404.html;
+        location  /404.html {
+            internal;
+        }
         if (\$request_filename ~ redirect_me){
             rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
         }
 }
 "
+
+echo "Ceci n'est pas une page" > /var/www/html/404.html
 
 echo "$new_config" > /etc/nginx/sites-available/default
 if [ "$(pgrep nginx)" -le 0 ];
