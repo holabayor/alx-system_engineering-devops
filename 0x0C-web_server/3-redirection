@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Bash script that configures Nginx server
+# so that /redirect_me is redirecting to another page
+
+apt-get update
+apt-get install -y nginx
+echo "Hello World!" | sudo tee /var/www/html/index.html
+redir = "
+	server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	server_name localhost;
+	root /var/www/html;
+	index index.html;
+	}
+
+	location /redirect_me {
+	return 301;
+	}
+}"
+echo "$redir" # > sudo tee /etc/nginx/sites-available/default
+/etc/init.d/nginx restart
