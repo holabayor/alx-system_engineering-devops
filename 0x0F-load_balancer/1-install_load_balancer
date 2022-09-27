@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Bash script to install load balancer
+sudo apt update
+sudo apt install -y haproxy
+
+sudo echo -e "
+\nfrontend haproxy-main
+\n\tbind *:80
+\n\tmode http
+\t\ndefault_backend nginx_webservers
+\n
+\nbackend nginx_webservers
+\n\tbalance roundrobin
+\n\tserver 7422-web-01\t18.206.238.207 check
+\n\tserver 7422-web-02\t44.197.196.98 check
+" >> /etc/haproxy/haproxy.cfg
+
+sudo service haproxy restart
