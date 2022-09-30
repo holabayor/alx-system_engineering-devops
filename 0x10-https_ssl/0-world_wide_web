@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Script that will display information about subdomains
+
+print_domain()
+{
+	dig "$2"."$1" | awk '/ANSWER SECTION:/{getline; print "The subdomain var is a "$4" record and points to "$5""}' | sed "s/var/$2/"
+}
+
+
+if [ -z "$2" ]
+then
+for subdomain in "www" "lb-01" "web-01" "web-02" 
+do
+	print_domain "$1" "$subdomain"
+done
+else
+	print_domain "$1" "$2"
+fi
