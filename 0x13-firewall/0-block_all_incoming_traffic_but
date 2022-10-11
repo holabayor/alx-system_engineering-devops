@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Script to block incoming traffic except
+
+sudo apt update
+sudo apt install ufw -y
+
+sudo ufw allow 22/tcp comment 'accept SSH connections'
+sudo ufw allow 443/tcp comment 'accept HTTPS connections'
+sudo ufw allow 80/tcp comment 'accept HTTP connections'
+sudo ufw enable
