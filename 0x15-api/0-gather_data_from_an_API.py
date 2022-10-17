@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-# Script that uses REST API to return info about a todo list progress
+""" Script that uses REST API to return info about a todo list progress
+"""
 import requests
 from sys import argv
 
