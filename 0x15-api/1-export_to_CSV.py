@@ -3,11 +3,11 @@
 Script that uses REST API to return info about a todo list progress
 """
 if __name__ == "__main__":
-    export_data(argv[1])
     import csv
     import requests
     from sys import argv
 
+    emp_id = (argv[1])
     user = requests.get("https://jsonplaceholder.typicode.com/users/{}"
                         .format(emp_id)).json()
     todo = requests.get("https://jsonplaceholder.typicode.com/users/{}/todos"
