@@ -2,12 +2,12 @@
 """
 Script that uses REST API to return info about a todo list progress
 """
-if __name__ == "__main__":
-    import csv
-    import requests
-    from sys import argv
+import csv
+import requests
+from sys import argv
 
-    emp_id = (argv[1])
+
+def extract_data(emp_id):
     user = requests.get("https://jsonplaceholder.typicode.com/users/{}"
                         .format(emp_id)).json()
     todo = requests.get("https://jsonplaceholder.typicode.com/users/{}/todos"
@@ -19,3 +19,7 @@ if __name__ == "__main__":
         for task in todo:
             csvwriter.writerow([user.get("id"), user.get("username"),
                                task.get("completed"), task.get("title")])
+
+
+if __name__ == "__main__":
+    extract_data(argv[1])
