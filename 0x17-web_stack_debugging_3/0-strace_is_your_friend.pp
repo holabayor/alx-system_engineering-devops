@@ -2,6 +2,6 @@
 
 exec { 'correct filename':
   provider => shell,
-  command  => "sed 's/.phpp/.php' /var/www/html/wp-settings.php",
+  command  => "sed 's/.phpp/.php/g' /var/www/html/wp-settings.php",
   path     => '/bin'
 }
